@@ -11,10 +11,8 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 
 import de.derluuc.serversigns.ServerSigns;
-import de.derluuc.serversigns.communication.CommunicationHandler;
 import de.derluuc.serversigns.data.DataStore;
 import de.derluuc.serversigns.data.ServerData;
-import de.derluuc.serversigns.data.ServerData.GameState;
 
 public class ServerSign {
 
@@ -52,7 +50,7 @@ public class ServerSign {
 	
 	public void join(Player p) {
 		if(data != null) {
-			if(data.) {
+			if(data.isOffline()) {
 				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Can't reach server!");
 				return;
 			}
@@ -82,7 +80,7 @@ public class ServerSign {
 				break;
 			String line = layout[i];
 			//System.out.println(line);
-			s.setLine(i, SignUtils.replaceVars(line, server));
+			s.setLine(i, SignUtils.replaceVars(line, data));
 		}
 		s.update();
 	}

@@ -7,36 +7,28 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 
-import de.derluuc.serversigns.communication.CommunicationHandler;
 import de.derluuc.serversigns.data.ServerData;
-import de.derluuc.serversigns.data.ServerData.GameState;
 
 public class SignUtils {
 
-	public static String replaceVars(String line, String server) {
-		ServerData data = CommunicationHandler.getInstance().getServerData(server);
+	public static String replaceVars(String line, ServerData data) {
 		if(data == null) {
-			line = line.replaceAll("&servername", server);
-			line = line.replaceAll("&state", ChatColor.RED + "• • • • • •");
+			line = line.replaceAll("&servername", data.getServer());
+			line = line.replaceAll("&motd", ChatColor.RED + "OFFLINE");
 			line = line.replaceAll("&online", "-");
 			line = line.replaceAll("&max", "-");
 			line = ChatColor.translateAlternateColorCodes("&".charAt(0), line);
 			return line;
 		}
 		line = line.replaceAll("&servername", data.getServer());
-		if(data.getGameState().equals(GameState.WAITING)) {
-			line = line.replaceAll("&state", ChatColor.GREEN + "• • • • • •");
-		} else if(data.getGameState().equals(GameState.RUNNING)) {
-			line = line.replaceAll("&state", ChatColor.GOLD + "• • • • • •");
-		} else {
-			line = line.replaceAll("&state", ChatColor.RED + "• • • • • •");
-		}
-		if(data.getGameState().equals(GameState.RESTARTING)) {
+		if(data.isOffline()) {
 			line = line.replaceAll("&online", "-");
 			line = line.replaceAll("&max", "-");
+			line = line.replaceAll("&motd", ChatColor.RED + "OFFLINE");
 		} else {
 			line = line.replaceAll("&online", Integer.toString(data.getOnlinePlayers()));
 			line = line.replaceAll("&max", Integer.toString(data.getMaxPlayers()));
+			line = line.replaceAll("&motd", data.getMotd());
 		}
 		line = ChatColor.translateAlternateColorCodes("&".charAt(0), line);
 		return line;

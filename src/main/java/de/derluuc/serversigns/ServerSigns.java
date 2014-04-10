@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.derluuc.serversigns.data.DataStore;
+import de.derluuc.serversigns.data.ServerData;
 import de.derluuc.serversigns.listeners.PlayerListener;
 import de.derluuc.serversigns.listeners.SignListener;
 import de.derluuc.serversigns.signs.ServerSign;
@@ -51,7 +52,6 @@ public class ServerSigns extends JavaPlugin {
 	public void scheduleSignUpdating() {
 		signupdateid = Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 
-			@Override
 			public void run() {
 				for(ServerSign rs : signs) {
 					rs.update();
@@ -59,6 +59,17 @@ public class ServerSigns extends JavaPlugin {
 			}
 			
 		}, 0L, 20L);
+	}
+	
+	public ServerData getData(String server) {
+		// todo
+		// return getData("", 25565);
+		return null;
+	}
+	
+	public ServerData getData(String ip, int port) {
+		// todo
+		return null;
 	}
 	
 }
