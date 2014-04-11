@@ -29,8 +29,10 @@ public class DataStore {
 	public DataStore() {
 		this.pl = ServerSigns.getInstance();
 		
-		ArrayList<ServerSign> signdata = new ArrayList<ServerSign>();
-		signdata.add(new ServerSign("exampleserver", "examplelayout", "exampleworld", 0, 0, 0));
+		this.pl.saveDefaultConfig();
+		
+		/*ArrayList<ServerSign> signdata = new ArrayList<ServerSign>();
+		signdata.add(new ServerSign("exampleserver", "examplelayout", "world", 0, 0, 0));
 		this.pl.getConfig().addDefault(NODE_SIGNLIST, SignUtils.serialize(signdata));
 		
 		this.pl.getConfig().addDefault(NODE_LAYOUT_DATA("examplelayout", LayoutDataType.LINE1), "line1");
@@ -44,7 +46,7 @@ public class DataStore {
 		this.pl.getConfig().addDefault(NODE_CYCLE_UPDATE, 20L);
 		
 		this.pl.getConfig().options().copyDefaults(true);
-		this.pl.saveConfig();
+		this.pl.saveConfig();*/
 	}
 	
 	public void put(String node, Object o) {
