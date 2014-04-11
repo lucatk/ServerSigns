@@ -2,3 +2,9 @@ name: ServerSigns
 version: 0.2.0-SNAPSHOT
 
 main: de.derluuc.serversigns.ServerSigns
+
+commands:
+  serversigns:
+    description: Command for updating config
+    usage: /serversigns reload
+    aliases: [ss, ssigns]

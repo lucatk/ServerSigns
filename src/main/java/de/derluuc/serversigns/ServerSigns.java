@@ -5,6 +5,7 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.derluuc.serversigns.commands.SSignsCommand;
 import de.derluuc.serversigns.data.DataStore;
 import de.derluuc.serversigns.data.ServerData;
 import de.derluuc.serversigns.listeners.PlayerListener;
@@ -27,6 +28,8 @@ public class ServerSigns extends JavaPlugin {
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		getServer().getPluginManager().registerEvents(new SignListener(), this);
 		getServer().getPluginManager().registerEvents(new PlayerListener(), this);
+		
+		getCommand("serversigns").setExecutor(new SSignsCommand());
 		
 		scheduleSignUpdating();
 	}
