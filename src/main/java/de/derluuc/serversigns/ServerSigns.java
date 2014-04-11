@@ -58,18 +58,7 @@ public class ServerSigns extends JavaPlugin {
 				}
 			}
 			
-		}, 0L, 20L);
-	}
-	
-	public ServerData getData(String server) {
-		// todo
-		// return getData("", 25565);
-		return null;
-	}
-	
-	public ServerData getData(String ip, int port) {
-		// todo
-		return null;
+		}, 0L, DataStore.getInstance().getSignUpdateCycle());
 	}
 	
 }

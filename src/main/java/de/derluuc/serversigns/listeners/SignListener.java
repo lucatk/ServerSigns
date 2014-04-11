@@ -27,15 +27,19 @@ public class SignListener implements Listener {
 			String server = e.getLine(1);
 			String layout = e.getLine(2);
 			Location loc = e.getBlock().getLocation();
+			if(!DataStore.getInstance().existsServer(server)) {
+				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Server not found.");
+				return;
+			}
 			if(!DataStore.getInstance().existsLayout(layout)) {
-				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Layout nicht gefunden.");
+				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Layout not found.");
 				return;
 			}
 			List<ServerSign> signs = DataStore.getInstance().getSigns();
 			signs.add(new ServerSign(server, layout, loc));
 			DataStore.getInstance().setSigns(signs);
 			ServerSigns.getInstance().reloadSigns();
-			p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Sign erstellt.");
+			p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Sign created.");
 		}
 	}
 	
@@ -48,6 +52,11 @@ public class SignListener implements Listener {
 			if(rs.getSignLocation().getBlockX() == e.getBlock().getLocation().getBlockX()) {
 				if(rs.getSignLocation().getBlockY() == e.getBlock().getLocation().getBlockY()) {
 					if(rs.getSignLocation().getBlockZ() == e.getBlock().getLocation().getBlockZ()) {
+						if(!p.isOp() && !p.hasPermission("serversigns.destroy")) {
+							e.setCancelled(true);
+							p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "You don't have permission to destroy this sign!");
+							return;
+						}
 						List<ServerSign> signs = DataStore.getInstance().getSigns();
 						int index = 0;
 						for(int i = 0; i < signs.size(); i++) {
@@ -60,7 +69,7 @@ public class SignListener implements Listener {
 						signs.remove(index);
 						DataStore.getInstance().setSigns(signs);
 						ServerSigns.getInstance().reloadSigns();
-						p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Sign zerstört.");
+						p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Sign destroyed.");
 						break;
 					}
 				}

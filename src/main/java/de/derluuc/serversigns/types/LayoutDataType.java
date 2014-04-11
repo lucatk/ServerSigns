@@ -1,6 +1,6 @@
-package de.derluuc.serversigns.data;
+package de.derluuc.serversigns.types;
 
-public enum LayoutData {
+public enum LayoutDataType {
 
 	LINE1("line1"),
 	LINE2("line2"),
@@ -9,7 +9,7 @@ public enum LayoutData {
 	
 	String node;
 	
-	LayoutData(String node) {
+	LayoutDataType(String node) {
 		this.node = node;
 	}
 	

@@ -11,6 +11,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 
 import de.derluuc.serversigns.ServerSigns;
+import de.derluuc.serversigns.communication.DataHandler;
 import de.derluuc.serversigns.data.DataStore;
 import de.derluuc.serversigns.data.ServerData;
 
@@ -69,6 +70,7 @@ public class ServerSign {
 	}
 	
 	public void update() {
+		data = DataHandler.getInstance().getData(server);
 		if(!(loc.getBlock().getState() instanceof Sign))
 			return;
 		Sign s = (Sign)loc.getBlock().getState();
