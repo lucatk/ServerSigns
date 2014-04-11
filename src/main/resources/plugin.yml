@@ -1,0 +1,4 @@
+name: ServerSigns
+version: 0.2.0-SNAPSHOT
+
+main: de.derluuc.serversigns.ServerSigns
