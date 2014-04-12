@@ -12,23 +12,23 @@ import de.derluuc.serversigns.data.ServerData;
 public class SignUtils {
 
 	public static String replaceVars(String line, ServerData data) {
-//		if(data == null) {
-//			line = line.replaceAll("&servername", data.getServer());
-//			line = line.replaceAll("&motd", ChatColor.RED + "OFFLINE");
-//			line = line.replaceAll("&online", "-");
-//			line = line.replaceAll("&max", "-");
-//			line = ChatColor.translateAlternateColorCodes("&".charAt(0), line);
-//			return line;
-//		}
-		line = line.replaceAll("%servername%", data.getServer());
+		if(data == null) {
+			line = line.replace("$servername", "null");
+			line = line.replace("$motd", ChatColor.RED + "OFFLINE");
+			line = line.replace("$online", "-");
+			line = line.replace("$max", "-");
+			line = ChatColor.translateAlternateColorCodes("&".charAt(0), line);
+			return line;
+		}
+		line = line.replace("$servername", data.getServer());
 		if(data.isOffline()) {
-			line = line.replaceAll("%online%", "-");
-			line = line.replaceAll("%max%", "-");
-			line = line.replaceAll("%motd%", ChatColor.RED + "OFFLINE");
+			line = line.replace("$online", "-");
+			line = line.replace("$max", "-");
+			line = line.replace("$motd", ChatColor.RED + "OFFLINE");
 		} else {
-			line = line.replaceAll("%online%", Integer.toString(data.getOnlinePlayers()));
-			line = line.replaceAll("%max%", Integer.toString(data.getMaxPlayers()));
-			line = line.replaceAll("%motd%", data.getMotd());
+			line = line.replace("$online", Integer.toString(data.getOnlinePlayers()));
+			line = line.replace("$max", Integer.toString(data.getMaxPlayers()));
+			line = line.replace("$motd", data.getMotd());
 		}
 		line = ChatColor.translateAlternateColorCodes("&".charAt(0), line);
 		return line;

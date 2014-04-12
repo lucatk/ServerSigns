@@ -15,7 +15,7 @@ public class SSignsCommand implements CommandExecutor {
 			cs.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Coded by DerLuuc. Web: derluuc.de Email: dev@derluuc.de");
 		} else {
 			if(args[0].equalsIgnoreCase("reload")) {
-				if(!cs.isOp() && !cs.hasPermission("serversigns.cmd.update")) {
+				if(!cs.isOp() && !cs.hasPermission("serversigns.cmd.reload")) {
 					cs.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "You don't have permission to perform this command!");
 					return true;
 				}

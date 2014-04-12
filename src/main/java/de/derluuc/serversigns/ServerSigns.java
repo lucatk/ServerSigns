@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.derluuc.serversigns.commands.SSignsCommand;
+import de.derluuc.serversigns.communication.DataHandler;
 import de.derluuc.serversigns.data.DataStore;
 import de.derluuc.serversigns.data.ServerData;
 import de.derluuc.serversigns.listeners.PlayerListener;
@@ -24,6 +25,7 @@ public class ServerSigns extends JavaPlugin {
 		instance = this;
 		DataStore.getInstance();
 		signs = DataStore.getInstance().getSigns();
+		DataHandler.getInstance();
 
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		getServer().getPluginManager().registerEvents(new SignListener(), this);
@@ -37,6 +39,7 @@ public class ServerSigns extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		Bukkit.getScheduler().cancelTask(signupdateid);
+		DataHandler.getInstance().disable();
 	}
 	
 	public static ServerSigns getInstance() {
@@ -52,9 +55,8 @@ public class ServerSigns extends JavaPlugin {
 		return signs;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void scheduleSignUpdating() {
-		signupdateid = Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
+		signupdateid = Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 
 			public void run() {
 				for(ServerSign rs : signs) {

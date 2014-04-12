@@ -74,13 +74,13 @@ public class ServerSign {
 		if(!(loc.getBlock().getState() instanceof Sign))
 			return;
 		Sign s = (Sign)loc.getBlock().getState();
-		String[] layout = DataStore.getInstance().getLayout(this.layout);
+		String[] l = DataStore.getInstance().getLayout(layout);
 		//System.out.println(layout);
-		for(int i = 0; i < layout.length; i++) {
+		for(int i = 0; i < l.length; i++) {
 			//System.out.println(i);
 			if(i > 3)
 				break;
-			String line = layout[i];
+			String line = l[i];
 			//System.out.println(line);
 			s.setLine(i, SignUtils.replaceVars(line, data));
 		}
