@@ -52,8 +52,9 @@ public class ServerSigns extends JavaPlugin {
 		return signs;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void scheduleSignUpdating() {
-		signupdateid = Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+		signupdateid = Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
 
 			public void run() {
 				for(ServerSign rs : signs) {
