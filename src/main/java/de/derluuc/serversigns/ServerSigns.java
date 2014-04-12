@@ -1,11 +1,9 @@
 package de.derluuc.serversigns;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.MetricsLite;
 
 import de.derluuc.serversigns.commands.SSignsCommand;
 import de.derluuc.serversigns.communication.DataHandler;
@@ -36,12 +34,6 @@ public class ServerSigns extends JavaPlugin {
 		getCommand("serversigns").setExecutor(new SSignsCommand());
 		
 		scheduleSignUpdating();
-		
-		try {
-		    MetricsLite metrics = new MetricsLite(this);
-		    metrics.start();
-		} catch (IOException e) {
-		}
 	}
 
 	@Override
