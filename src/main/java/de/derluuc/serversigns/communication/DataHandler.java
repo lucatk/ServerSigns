@@ -41,13 +41,14 @@ public class DataHandler {
 					//System.out.println(b + ":" + ((char) b));
 				}
 			}
+			sock.close();
 			 
 			String[] data = str.toString().split("§");
+			if(data.length < 3)
+				return new ServerData(name, "", 0, 0, true);
 			String serverMotd = data[0];
 			int onlinePlayers = Integer.parseInt(data[1]);
 			int maxPlayers = Integer.parseInt(data[2]);
-			
-			sock.close();
 			return new ServerData(name, serverMotd, onlinePlayers, maxPlayers, false);
 		} catch (UnknownHostException e) {
 			return new ServerData(name, "", 0, 0, true);
