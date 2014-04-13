@@ -52,7 +52,7 @@ public class ServerSign {
 	public void join(Player p) {
 		if(data != null) {
 			if(data.isOffline()) {
-				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Can't reach server!");
+				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + ServerSigns.getLangManager().getLocaleMessage("lang.sign.joincantreach"));
 				return;
 			}
 			ByteArrayOutputStream b = new ByteArrayOutputStream();
@@ -61,11 +61,11 @@ public class ServerSign {
 				out.writeUTF("Connect");
 				out.writeUTF(data.getServer());
 			} catch (IOException e) {
-				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "An error occurred. Please contact an operator!");
+				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + ServerSigns.getLangManager().getLocaleMessage("lang.sign.joinerror"));
 			}
 			p.sendPluginMessage(ServerSigns.getInstance(), "BungeeCord", b.toByteArray());
 		} else {
-			p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Can't reach server!");
+			p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + ServerSigns.getLangManager().getLocaleMessage("lang.sign.joincantreach"));
 		}
 	}
 	

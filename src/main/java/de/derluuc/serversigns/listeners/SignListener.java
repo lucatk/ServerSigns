@@ -28,18 +28,18 @@ public class SignListener implements Listener {
 			String layout = e.getLine(2);
 			Location loc = e.getBlock().getLocation();
 			if(!DataStore.getInstance().existsServer(server)) {
-				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Server not found.");
+				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + ServerSigns.getLangManager().getLocaleMessage("lang.creation.servernotfound"));
 				return;
 			}
 			if(!DataStore.getInstance().existsLayout(layout)) {
-				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Layout not found.");
+				p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + ServerSigns.getLangManager().getLocaleMessage("lang.creation.layoutnotfound"));
 				return;
 			}
 			List<ServerSign> signs = DataStore.getInstance().getSigns();
 			signs.add(new ServerSign(server, layout, loc));
 			DataStore.getInstance().setSigns(signs);
 			ServerSigns.getInstance().reloadSigns();
-			p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Sign created.");
+			p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + ServerSigns.getLangManager().getLocaleMessage("lang.creation.created"));
 		}
 	}
 	
@@ -54,7 +54,7 @@ public class SignListener implements Listener {
 					if(rs.getSignLocation().getBlockZ() == e.getBlock().getLocation().getBlockZ()) {
 						if(!p.isOp() && !p.hasPermission("serversigns.destroy")) {
 							e.setCancelled(true);
-							p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "You don't have permission to destroy this sign!");
+							p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + ServerSigns.getLangManager().getLocaleMessage("lang.global.nopermission"));
 							return;
 						}
 						List<ServerSign> signs = DataStore.getInstance().getSigns();
@@ -69,7 +69,7 @@ public class SignListener implements Listener {
 						signs.remove(index);
 						DataStore.getInstance().setSigns(signs);
 						ServerSigns.getInstance().reloadSigns();
-						p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + "Sign destroyed.");
+						p.sendMessage(ChatColor.GREEN + "[ServerSigns] " + ChatColor.GOLD + ServerSigns.getLangManager().getLocaleMessage("lang.creation.destroyed"));
 						break;
 					}
 				}

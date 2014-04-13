@@ -1,0 +1,13 @@
+lang:
+  global:
+    nopermission: Du hast keine Rechte dafuer.
+  creation:
+    created: Schild erstellt.
+    destroyed: Schild zerstoert.
+    servernotfound: Server nicht gefunden.
+    layoutnotfound: Layout nicht gefunden.
+  sign:
+    joincantreach: Kann Server nicht erreichen.
+    joinerror: Ein Fehler ist aufgetreten. Bitte kontaktiere einen Operator!
+  cmd:
+    reloaded: Erfolgreich reloaded.

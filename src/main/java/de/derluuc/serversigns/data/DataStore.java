@@ -25,13 +25,13 @@ public class DataStore {
 	public static String NODE_LAYOUT_DATA(String layout, LayoutDataType type) { return NODE_LAYOUT(layout) + "." + type.node(); }
 
 	public static String NODE_CYCLE_UPDATE = "serversigns.cycleupdate";
+	public static String NODE_LANGUAGE = "serversigns.language";
 	
 	public DataStore() {
 		this.pl = ServerSigns.getInstance();
 		
-		this.pl.saveDefaultConfig();
 		
-		/*ArrayList<ServerSign> signdata = new ArrayList<ServerSign>();
+		ArrayList<ServerSign> signdata = new ArrayList<ServerSign>();
 		signdata.add(new ServerSign("exampleserver", "examplelayout", "world", 0, 0, 0));
 		this.pl.getConfig().addDefault(NODE_SIGNLIST, SignUtils.serialize(signdata));
 		
@@ -46,7 +46,8 @@ public class DataStore {
 		this.pl.getConfig().addDefault(NODE_CYCLE_UPDATE, 20L);
 		
 		this.pl.getConfig().options().copyDefaults(true);
-		this.pl.saveConfig();*/
+		this.pl.saveConfig();
+		this.pl.saveDefaultConfig();
 	}
 	
 	public void put(String node, Object o) {
@@ -93,6 +94,15 @@ public class DataStore {
 	
 	public long getSignUpdateCycle() {
 		return this.pl.getConfig().getLong(NODE_CYCLE_UPDATE);
+	}
+	
+	public String getLanguageId() {
+		return this.pl.getConfig().getString(NODE_LANGUAGE);
+	}
+	
+	public void setLanguageId(String id) {
+		this.pl.getConfig().set(NODE_LANGUAGE, id);
+		this.pl.reloadConfig();
 	}
 	
 }

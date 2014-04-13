@@ -56,11 +56,9 @@ public class SignUtils {
 		return signs;
 	}
 	
-	
-	
 	private static class LocationSerialiser
 	{
-		//credits to Yonas for this neat util :)
+		//credits to Codebucket for this neat util :)
 		
 		public static String locationPlayerToString(Location loc)
 		{

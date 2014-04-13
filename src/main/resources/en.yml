@@ -1,0 +1,13 @@
+lang:
+  global:
+    nopermission: You don't have permission to destroy this sign!
+  creation:
+    created: Sign created.
+    destroyed: Sign destroyed.
+    servernotfound: Server not found.
+    layoutnotfound: Layout not found.
+  sign:
+    joincantreach: Can't reach server!
+    joinerror: An error occurred. Please contact an operator!
+  cmd:
+    reloaded: Successfully reloaded.

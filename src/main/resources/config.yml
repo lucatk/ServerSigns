@@ -1,31 +1,30 @@
 #
-#       = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-#       =: = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = :=
-#       ::                                                                             ::
-#       ::   #####                                      #####                          ::
-#       ::  #     # ###### #####  #    # ###### #####  #     # #  ####  #    #  ####   ::
-#       ::  #       #      #    # #    # #      #    # #       # #    # ##   # #       ::
-#       ::   #####  #####  #    # #    # #####  #    #  #####  # #      # #  #  ####   ::
-#       ::        # #      #####  #    # #      #####        # # #  ### #  # #      #  ::
-#       ::  #     # #      #   #   #  #  #      #   #  #     # # #    # #   ## #    #  ::
-#       ::   #####  ###### #    #   ##   ###### #    #  #####  #  ####  #    #  ####   ::
-#       ::                                                                             ::
-#       =: = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = :=
-#       = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+#       = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+#       =: = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = :=
+#       ::                                                                               ::
+#       ::                                  ServerSigns                                  ::
+#       ::                                    Config                                     ::
+#       ::                                                                               ::
+#       =: = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = :=
+#       = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 #                               
 #       you can use color codes (prefix: &) for layout contents
 #       and following variables:
 #
-#       %servername% - Shows the name of the server
-#       %motd% - Shows the actual server motd
-#       %online% - Shows the actual number of online players on the server
-#       %max% - Shows the number of maximum players on server
+#       $servername - Shows the name of the server
+#       $motd - Shows the actual server motd
+#       $online - Shows the actual number of online players on the server
+#       $max - Shows the number of maximum players on server
 #
 #
 serversigns:
 # it's the best if you don't change signsdata!
   signsdata:
   - exampleserver;examplelayout;world,0.0,0.0,0.0
+  
+# common languages are en and de, you can define your own language file with <yourlangcode>.yml in the ServerSigns folder.
+  language: en
+  
   layouts:
     examplelayout:
       line1: line1
@@ -36,5 +35,6 @@ serversigns:
     exampleserver:
       ip: localhost
       port: 25565
+      
   cycleupdate: 20
 #         ^ in ticks ^
